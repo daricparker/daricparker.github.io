@@ -1,7 +1,19 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
+// middleware for express to parse json
+app.use(express.json());
+
+//whitelists api
+app.use(cors());
+
+// db models
 const db = require("./models");
+
+// Routers
+const usersRouter = require("./routes/Users");
+app.use("/auth", usersRouter);
 
 db.sequelize.sync().then(() => {
   app.listen(3001, () => {

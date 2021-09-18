@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     gender: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.TINYINT,
       allowNull: false,
     },
     birthday: {
@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     height: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    weight: {
+      type: DataTypes.FLOAT,
       allowNull: false,
     },
     targetWeight: {
