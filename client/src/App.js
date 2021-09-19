@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { Layout } from "./components/Layout";
-
 import Home from "./pages/Home";
+import Registration from "./pages/Registration";
+import Login from "./pages/Login";
+
 import { NavigationBar } from "./components/NavigationBar";
+import { Layout } from "./components/Layout";
 
 function App() {
   return (
@@ -14,8 +16,8 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
-            {/* <Route path="/" component={About} />
-          <Route path="/" component={NoMatch} /> */}
+            <Route path="/register" component={Registration} />
+            <Route path="/login" component={Login} />
           </Switch>
         </Router>
       </Layout>
