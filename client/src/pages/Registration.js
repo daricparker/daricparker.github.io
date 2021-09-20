@@ -19,6 +19,9 @@ const Styles = styled.div`
   .radio {
     margin-left: 15px;
   }
+  Button {
+    margin-top: 15px;
+  }
 `;
 
 function Registration() {
@@ -35,7 +38,7 @@ function Registration() {
   const validationSchema = Yup.object().shape({
     username: Yup.string().min(3).max(15).required(),
     password: Yup.string().min(6).max(99).required(),
-    gender: Yup.number().min(1).max(1).required(),
+    gender: Yup.string().required(),
     birthday: Yup.date().required(),
     height: Yup.number().required().positive().integer(),
     weight: Yup.number().required().positive(),
@@ -55,23 +58,14 @@ function Registration() {
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
-        <Form>
+        <Form className="form-group">
           <h1>Register</h1>
-          <div className="form-group">
-            <label>Username: </label>
-            <ErrorMessage name="username" component="span" />
-            <Field
-              autoComplete="off"
-              id=""
-              name="username"
-              placeholder="(Ex. LeanGuy23...)"
-            />
-          </div>
-          <div className="form-group">
-            <label>Password: </label>
-            <ErrorMessage name="password" component="span" />
-            <Field autoComplete="off" id="" name="password" />
-          </div>
+          <label>Username: </label>
+          <ErrorMessage name="username" component="span" />
+          <Field autoComplete="off" id="" name="username" />
+          <label>Password: </label>
+          <ErrorMessage name="password" component="span" />
+          <Field type="password" autoComplete="off" id="" name="password" />
 
           <div id="my-radio-group">Gender</div>
           <div role="group" aria-labelledby="my-radio-group">
@@ -95,31 +89,28 @@ function Registration() {
             </label>
           </div>
 
-          <div className="form-group">
-            <label>Birthday </label>
-            <ErrorMessage name="birthday" component="span" />
-            <Field autoComplete="off" id="" name="birthday" />
-          </div>
+          <label>Birthday </label>
+          <ErrorMessage name="birthday" component="span" />
+          <Field
+            autoComplete="off"
+            id=""
+            name="birthday"
+            placeholder="YYYY-MM-DD"
+          />
 
-          <div className="form-group">
-            <label>Height </label>
-            <ErrorMessage name="height" component="span" />
-            <Field autoComplete="off" id="" name="height" />
-          </div>
+          <label>Height (cm): </label>
+          <ErrorMessage name="height" component="span" />
+          <Field autoComplete="off" id="" name="height" />
 
-          <div className="form-group">
-            <label>Weight </label>
-            <ErrorMessage name="weight" component="span" />
-            <Field autoComplete="off" id="" name="weight" />
-          </div>
+          <label>Weight: </label>
+          <ErrorMessage name="weight" component="span" />
+          <Field autoComplete="off" id="" name="weight" />
 
-          <div className="form-group">
-            <label>Target Weight</label>
-            <ErrorMessage name="targetWeight" component="span" />
-            <Field autocomplete="off" id="" name="targetWeight" />
-          </div>
+          <label>Target Weight: </label>
+          <ErrorMessage name="targetWeight" component="span" />
+          <Field autoComplete="off" id="" name="targetWeight" />
 
-          <Button type="submit"> Register</Button>
+          <Button type="submit">Register</Button>
         </Form>
       </Formik>
     </Styles>
