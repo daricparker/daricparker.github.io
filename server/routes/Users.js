@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Users } = require("../models/");
 const bcrpyt = require("bcrypt");
+const { sign } = require("jsonwebtoken");
 
 // logic for registration
 router.post("/", async (req, res) => {
@@ -30,7 +31,14 @@ router.post("/login", async (req, res) => {
   bcrpyt.compare(password, user.password).then((pwMatch) => {
     if (!pwMatch)
       res.json({ error: "Incorrect Username or Password Combination" });
-    res.json("Login Successful");
+
+    // grabs username from user const
+    const accessToken = sign(
+      { username: user.username, id: user.id },
+      "3X2xOjbneC"
+    );
+
+    res.json(accessToken);
   });
 });
 
