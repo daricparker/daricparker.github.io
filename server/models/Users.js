@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     gender: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     birthday: {
