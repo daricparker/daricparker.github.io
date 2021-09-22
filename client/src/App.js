@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AuthContext } from "./components/AuthContext";
 import axios from "axios";
 
+import NavigationBar from "./components/NavigationBar";
 import Home from "./pages/Home";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
@@ -52,6 +53,7 @@ function App() {
   return (
     <AuthContext.Provider value={{ authState, setAuthState }}>
       <>
+        <NavigationBar />
         <NavStyle>
           <Navbar bg="primary" expand="lg">
             <Navbar.Brand href="/">Fit-Forward</Navbar.Brand>
