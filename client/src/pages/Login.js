@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
+import { AuthContext } from "../components/AuthContext";
 
 const Styles = styled.div`
   text-align: center;
@@ -19,11 +21,20 @@ const Styles = styled.div`
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { setAuthState } = useContext(AuthContext);
+
+  let history = useHistory();
 
   const login = () => {
     const data = { username: username, password: password };
-    axios.post("http://localhost:3001/auth/login", data).then((response) => {
-      console.log(response.data);
+    axios.post("http://localhost:3001/login", data).then((response) => {
+      if (response.data.error) {
+        alert(response.data.error);
+      } else {
+        localStorage.setItem("accessToken", response.data);
+        setAuthState(true);
+        history.push("/");
+      }
     });
   };
 

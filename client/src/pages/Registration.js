@@ -62,10 +62,10 @@ function Registration() {
           <h1>Register</h1>
           <label>Username: </label>
           <ErrorMessage name="username" component="span" />
-          <Field autoComplete="off" id="" name="username" />
+          <Field autoComplete="off" name="username" />
           <label>Password: </label>
           <ErrorMessage name="password" component="span" />
-          <Field type="password" autoComplete="off" id="" name="password" />
+          <Field type="password" autoComplete="off" name="password" />
 
           <div id="my-radio-group">Gender</div>
           <div role="group" aria-labelledby="my-radio-group">
@@ -91,24 +91,19 @@ function Registration() {
 
           <label>Birthday </label>
           <ErrorMessage name="birthday" component="span" />
-          <Field
-            autoComplete="off"
-            id=""
-            name="birthday"
-            placeholder="YYYY-MM-DD"
-          />
+          <Field autoComplete="off" name="birthday" placeholder="YYYY-MM-DD" />
 
           <label>Height (cm): </label>
           <ErrorMessage name="height" component="span" />
-          <Field autoComplete="off" id="" name="height" />
+          <Field autoComplete="off" name="height" />
 
           <label>Weight: </label>
           <ErrorMessage name="weight" component="span" />
-          <Field autoComplete="off" id="" name="weight" />
+          <Field autoComplete="off" name="weight" />
 
           <label>Target Weight: </label>
           <ErrorMessage name="targetWeight" component="span" />
-          <Field autoComplete="off" id="" name="targetWeight" />
+          <Field autoComplete="off" name="targetWeight" />
 
           <Button type="submit">Register</Button>
         </Form>
